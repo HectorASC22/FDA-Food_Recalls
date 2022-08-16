@@ -1,0 +1,55 @@
+body {
+margin: 0;
+padding: 0;
+text-decoration: none;
+list-style: none; 
+}
+
+
+#navBar {
+    background-color: #00517d;
+    font-family: Calibri;
+    text-align: start;
+    padding: 5px;
+}
+
+#TopPreviousButton {
+    border: 2%;
+}
+
+#TopPreviousNextButton {
+    border: 2%;
+    text-align: end;
+}
+
+#BottomPreviousButton {
+    border: 2%;
+}
+
+#BottomNextButton {
+    border: 2%;
+    text-align: end;
+}
+
+.buttons {
+    text-align: center;
+}
+
+
+
+
+#allRecallsPosts {
+    text-align: center;
+    color: #fff;
+}
+
+.single-recall-post {
+    border-color: solid black;
+    border: 2%;
+    margin-bottom: 20px;
+    background-color: #6c9fbb;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+    border-radius: 30px;
+}
