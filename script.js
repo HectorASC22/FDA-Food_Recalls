@@ -3,24 +3,34 @@ let requestURL;
 let recalls = [];
 let pageNumber = 0;
 
-
+let statesFilter = document.getElementById("states");
 
 
 
 function callApi() {
-    requestURL = `https://api.fda.gov/food/enforcement.json?limit=1000&sort=report_date:desc&skip=${skip}`;
+    if (statesFilter.value == "all-states") {
+        requestURL = `https://api.fda.gov/food/enforcement.json?limit=1000&sort=report_date:desc&skip=${skip}`
+    } else {
+        requestURL = `https://api.fda.gov/food/enforcement.json?limit=1000&sort=report_date:desc&skip=${skip}&search=state.exact:"${statesFilter.value}"`;
+    }
+
     fetch(requestURL)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
+            console.log(data.results);
             recalls.push(...data.results);
             console.log(recalls);
 
             if (skip + 1000 < (data.meta.results.total)) {
                 skip += 1000;
                 callApi();
+            } else {
+                displayData();
+                skip = 0;
+
             }
         })
         .catch(function (error) {
@@ -34,22 +44,26 @@ let data = callApi();
 
 
 let statesSubmitButton = document.getElementById("states-submit");
-statesSubmitButton.addEventListener("click", displayData);
+statesSubmitButton.addEventListener("click", function (event) {
+    event.preventDefault(); 
+    recalls = [];
+    pageNumber = 0;
+    callApi();
 
-function displayData(event) {
-    event.preventDefault();
+});
+
+function displayData() {
+
     let masterDiv = document.getElementById("allRecallsPosts");
     masterDiv.innerHTML = "";
 
-    let statesFilter = document.getElementById("states");
-    let statesInput;
-    statesInput = statesFilter.value;
+
 
     
     for (let i = 0 + (pageNumber * 100); i < 100 + (pageNumber * 100); i++) {
         console.log("worked");
-        console.log(statesInput);
-        if (recalls[i].state == statesInput) {
+        console.log(statesFilter.value);
+        //if (recalls[i].state == statesFilter.value) {
             // console.log("worked");
 
             // "STATE-VARIABLE".include("STATE NAME/ABBREV")
@@ -78,34 +92,34 @@ function displayData(event) {
 
             makeRecallPost(title, reportedState, status, classification, location, productType, distributionPattern, productDescription, productQuantity, recallReason);
 
-        }
+        //}
 
 
-        if (statesInput == "all-states") {
-            let title;
-            let status;
-            let classification;
-            let location;
-            let productType;
-            let distributionPattern;
-            let productDescription;
-            let productQuantity;
-            let recallReason;
-            let reportedState;
+        // if (statesInput == "all-states") {
+        //     let title;
+        //     let status;
+        //     let classification;
+        //     let location;
+        //     let productType;
+        //     let distributionPattern;
+        //     let productDescription;
+        //     let productQuantity;
+        //     let recallReason;
+        //     let reportedState;
 
-            title = recalls[i].report_date;
-            reportedState = recalls[i].state;
-            status = recalls[i].status;
-            classification = recalls[i].classification;
-            location = recalls[i].city, recalls[i].state, recalls[i].country;
-            productType = recalls[i].product_type;
-            distributionPattern = recalls[i].distribution_pattern;
-            productDescription = recalls[i].product_description;
-            productQuantity = recalls[i].product_quantity;
-            recallReason = recalls[i].reason_for_recall;
+        //     title = recalls[i].report_date;
+        //     reportedState = recalls[i].state;
+        //     status = recalls[i].status;
+        //     classification = recalls[i].classification;
+        //     location = recalls[i].city, recalls[i].state, recalls[i].country;
+        //     productType = recalls[i].product_type;
+        //     distributionPattern = recalls[i].distribution_pattern;
+        //     productDescription = recalls[i].product_description;
+        //     productQuantity = recalls[i].product_quantity;
+        //     recallReason = recalls[i].reason_for_recall;
 
-            makeRecallPost(title, reportedState, status, classification, location, productType, distributionPattern, productDescription, productQuantity, recallReason);
-        }
+        //     makeRecallPost(title, reportedState, status, classification, location, productType, distributionPattern, productDescription, productQuantity, recallReason);
+        // }
     }
 }
 
@@ -202,14 +216,14 @@ function nextPage(event) {
     if ((pageNumber + 1) * 100 <= recalls.length) { // if page number not too high
         pageNumber += 1;
         console.log("click registefdsgag");
-        displayData(event);
+        displayData();
     }
 }
 function previousPage(event) {
     if ((pageNumber - 1) * 100 >= 0) {  // if page number is not too low
         pageNumber -= 1;
         console.log("click previous wokring");
-        displayData(event);
+        displayData();
     }
 }
 
@@ -236,3 +250,4 @@ function previousPage(event) {
 // Last page: 100 + ? = 2250
 
 // MATH!
+

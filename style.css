@@ -3,14 +3,23 @@ margin: 0;
 padding: 0;
 text-decoration: none;
 list-style: none; 
+background-color: #477892;
+}
+
+img {
+    width: 20%;
+    height: 40%;
+    
 }
 
 
 #navBar {
-    background-color: #00517d;
+    background-color: #6c9fbb;
     font-family: Calibri;
     text-align: start;
     padding: 5px;
+    position: relative;
+    margin-bottom: 40px;
 }
 
 #TopPreviousButton {
@@ -41,6 +50,11 @@ list-style: none;
 #allRecallsPosts {
     text-align: center;
     color: #fff;
+    font-family: sans-serif;
+    font-size: large;
+    padding: -300px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
 
 .single-recall-post {
@@ -52,4 +66,31 @@ list-style: none;
     margin-right: 10%;
     padding: 10px;
     border-radius: 30px;
+}
+
+#states-dropdown {
+    position: absolute;
+    margin-left: 1400px;
+}
+
+.recallContent {
+    background-color: #81aec7;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.titleDiv {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#label {
+    color: white;
+}
+
+#footer {
+    background-color: #43687c;
 }
