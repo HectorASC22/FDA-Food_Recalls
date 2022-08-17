@@ -206,8 +206,8 @@ function makeRecallPost(titleParam, stateParam, statusParam, classificationParam
 // BUTTONS
 let topNextButton = document.getElementById("TopNextButton");
 let topPreviousButton = document.getElementById("TopPreviousButton");
-let bottomNextButton = document.getElementById("BottomPreviousButton");
-let bottomPreviousButton = document.getElementById("BottomNextButton");
+let bottomNextButton = document.getElementById("BottomNextButton");
+let bottomPreviousButton = document.getElementById("BottomPreviousButton");
 topPreviousButton.onclick = previousPage;
 topNextButton.onclick = nextPage;
 bottomNextButton.onclick = nextPage;

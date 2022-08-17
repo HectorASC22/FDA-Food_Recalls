@@ -53,8 +53,8 @@ img {
     font-family: sans-serif;
     font-size: large;
     padding: -300px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .single-recall-post {
