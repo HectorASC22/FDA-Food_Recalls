@@ -4,6 +4,7 @@ padding: 0;
 text-decoration: none;
 list-style: none; 
 background-color: #477892;
+max-width: max-content;
 }
 
 img {
@@ -19,7 +20,7 @@ img {
     text-align: start;
     padding: 5px;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 #TopPreviousButton {
@@ -44,7 +45,49 @@ img {
     text-align: center;
 }
 
+#loading {
+    opacity: 1;
+    position: relative;
+    top: 400px;
+    left: 800px;
+    color: #fff;
+    text-align: center;
+    font-size: 75px;
 
+    /* Animation to cause loading screen fade in and out*/
+    animation: fadeInOut ease-in-out 5s 1s;
+}
+
+/*Set key points within the duration of the animation, in which specificed rules are carried out*/
+@keyframes fadeInOut {
+    0% {
+        opacity:1;
+    }
+
+    20% {
+        opacity: 0
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+      
+    60% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+   100% {
+    opacity: 1;
+}
+}
 
 
 #allRecallsPosts {
@@ -70,7 +113,7 @@ img {
 
 #states-dropdown {
     position: absolute;
-    margin-left: 1400px;
+    margin-left: 66%;
 }
 
 .recallContent {
@@ -93,4 +136,25 @@ img {
 
 #footer {
     background-color: #43687c;
+}
+
+@media screen and (max-width: 1000px) {
+
+
+}
+
+
+@media screen and (max-width: 600px) {
+    #navBar {
+    min-width: 10%;
+    
+
+
+    }
+    
+    
+    
+    #states-dropdown {
+        
+    }
 }
